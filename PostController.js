@@ -20,22 +20,38 @@ class PostController {
 
   // Получение всех статей
   async getAll(req, res) {
+    try {
 
+    } catch (e) {
+      res.status(400).json(e)
+    }
   }
 
   // Получение одной статьи
   async getOne(req, res) {
+    try {
 
+    } catch (e) {
+      res.status(400).json(e)
+    }
   }
 
   // Редактирование одной статьи
   async update(req, res) {
+    try {
 
+    } catch (e) {
+      res.status(400).json(e)
+    }
   }
 
   // Удаление статьи
   async delete(req, res) {
+    try {
 
+    } catch (e) {
+      res.status(400).json(e)
+    }
   }
 
 }
