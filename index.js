@@ -31,8 +31,12 @@ app.post('/', (req, res) => {
 
 async function startApp() {
   try {
+    // Подключаемся к Монге
+    await mongoose.connect(DB_URL, {useUnifiedTopology: true, useNewUrlParser: true, })
+    // Запускаем сервер
     app.listen(PORT, () => console.log('SERVER STARTED AT ' + PORT))
   } catch (e) {
+    // Выводим лог ошибок
     console.log(e)
   }
 }
