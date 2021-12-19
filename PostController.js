@@ -1,4 +1,4 @@
-import Post from "./Post.js";
+import PostService from "./PostService.js";
 
 // Контроллер статей (постов)
 class PostController {
@@ -6,10 +6,7 @@ class PostController {
   // Создание статьи
   async create(req, res) {
     try {
-      // Распаковываем боди
-      const {author, title, content, picture} = req.body
-      // Создаем запись в БД
-      const post = await Post.create({author, title, content, picture})
+      const post = await PostService.create(req.body)
       // Возвращаем нужный статус
       res.status(201).json({post})
     } catch (e) {
@@ -21,7 +18,7 @@ class PostController {
   // Получение всех статей
   async getAll(req, res) {
     try {
-      const posts = await Post.find()
+      const posts = await PostService.getAll()
       return res.json(posts)
     } catch (e) {
       res.status(400).json(e)
@@ -31,11 +28,7 @@ class PostController {
   // Получение одной статьи
   async getOne(req, res) {
     try {
-      const {id} = req.params
-      if (!id) {
-        res.status(400).json({message: 'ID не указан'})
-      }
-      const post = await Post.findById(id)
+      const post = await PostService.getOne(req.params.id)
       return res.json(post)
     } catch (e) {
       res.status(400).json(e)
@@ -45,12 +38,7 @@ class PostController {
   // Редактирование одной статьи
   async update(req, res) {
     try {
-      const post = req.body
-      if (!post._id) {
-        res.status(400).json({message: 'ID не указан'})
-      }
-      // Обновляем пост и возвращаем ({new: true}) обновленную версию поста
-      const updatedPost = await Post.findByIdAndUpdate(post._id, post, {new: true})
+      const updatedPost = await PostService.update(req.body)
       return res.json(updatedPost)
     } catch (e) {
       res.status(400).json(e)
@@ -60,11 +48,7 @@ class PostController {
   // Удаление статьи
   async delete(req, res) {
     try {
-      const {id} = req.params
-      if (!id) {
-        res.status(400).json({message: 'ID не указан'})
-      }
-      const post = await Post.findByIdAndRemove(id)
+      const post = await PostService.delete(req.params.id)
       return res.status(204).json(post)
     } catch (e) {
       res.status(400).json(e)

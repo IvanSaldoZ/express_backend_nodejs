@@ -13,7 +13,7 @@ router.get('/posts', PostController.getAll)
 router.get('/posts/:id', PostController.getOne)
 
 // Редактирование статьи
-router.put('/posts/', PostController.update)
+router.put('/posts', PostController.update)
 
 // Удаление статьи
 router.delete('/posts/:id', PostController.delete)
