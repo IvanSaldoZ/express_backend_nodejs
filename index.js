@@ -1,6 +1,8 @@
 import express from 'express'
 import mongoose from 'mongoose'
-import Post from "./Post.js";
+
+// Маршруты (роутеры) управления статьями
+import router from "./router.js";
 
 // URL подключения к БД:
 const DB_URL = 'mongodb+srv://user:user@cluster0.lgikb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
@@ -11,23 +13,11 @@ const PORT = 5000;
 // Создаем объект Express-а
 const app = express()
 
-// Для того, чтобы Express понимал JSON-формат, отправляемый ему от пользователя в BODY
+// Для того чтобы Express понимал JSON-формат, отправляемый ему от пользователя в BODY
 app.use(express.json())
 
-// Эндпоинт / - главная страница
-app.post('/', async (req, res) => {
-  try {
-    // Распаковываем боди
-    const {author, title, content, picture} = req.body
-    // Создаем запись в БД
-    const post = await Post.create({author, title, content, picture})
-    // Возвращаем нужный статус
-    res.status(201).json({post})
-  } catch (e) {
-    // Возвращаем нужный статус
-    res.status(400).json(e)
-  }
-})
+// Регистрируем роутер
+app.use('/api', router)
 
 async function startApp() {
   try {
