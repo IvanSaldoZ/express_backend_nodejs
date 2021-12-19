@@ -23,6 +23,10 @@ app.use('/api', router)
 // Регистрируем аплоадер для загрузки файлов на сервер
 app.use(fileUpload({}))
 
+// Регистрируем роутер
+app.use('/api', router)
+
+
 async function startApp() {
   try {
     // Подключаемся к Монге
