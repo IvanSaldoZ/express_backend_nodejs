@@ -29,4 +29,12 @@ app.post('/', (req, res) => {
   res.status(200).json('Сервер работает3333')
 })
 
-app.listen(PORT, () => console.log('SERVER STARTED AT ' + PORT))
+async function startApp() {
+  try {
+    app.listen(PORT, () => console.log('SERVER STARTED AT ' + PORT))
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+startApp()
