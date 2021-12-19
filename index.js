@@ -1,4 +1,8 @@
 import express from 'express'
+import mongoose from 'mongoose'
+
+// URL подключения к БД:
+const DB_URL = 'mongodb+srv://user:user@cluster0.lgikb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 //Номер порта
 const PORT = 5000;

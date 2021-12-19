@@ -9,3 +9,11 @@ Dev-сервер (с отслеживанием изменений кода - no
 
 Start (без отслеживания изменений):
 `npm run start`
+
+
+## MongoDb
+
+https://cloud.mongodb.com/v2/61be80d923c8162e3abd94a6#clusters?fastPoll=true
+
+user: user
+password: user
