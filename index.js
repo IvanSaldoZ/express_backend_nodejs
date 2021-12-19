@@ -16,12 +16,17 @@ app.use(express.json())
 
 // Эндпоинт / - главная страница
 app.post('/', async (req, res) => {
-  // Распаковываем боди
-  const {author, title, content, picture} = req.body
-  // Создаем запись в БД
-  const post = await Post.create({author, title, content, picture})
-  // Возвращаем нужный статус
-  res.status(201).json({post})
+  try {
+    // Распаковываем боди
+    const {author, title, content, picture} = req.body
+    // Создаем запись в БД
+    const post = await Post.create({author, title, content, picture})
+    // Возвращаем нужный статус
+    res.status(201).json({post})
+  } catch (e) {
+    // Возвращаем нужный статус
+    res.status(400).json(e)
+  }
 })
 
 async function startApp() {
