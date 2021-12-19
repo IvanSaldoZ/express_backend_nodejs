@@ -32,6 +32,9 @@ class PostController {
   async getOne(req, res) {
     try {
       const {id} = req.params
+      if (!id) {
+        res.status(400).json({message: 'ID не указан'})
+      }
       const post = await Post.findById(id)
       return res.json(post)
     } catch (e) {
