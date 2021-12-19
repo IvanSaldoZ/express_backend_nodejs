@@ -42,7 +42,13 @@ class PostController {
   // Редактирование одной статьи
   async update(req, res) {
     try {
-
+      const post = req.body
+      if (!post._id) {
+        res.status(400).json({message: 'ID не указан'})
+      }
+      // Обновляем пост и возвращаем ({new: true}) обновленную версию поста
+      const updatedPost = await Post.findByIdAndUpdate(post._id, post, {new: true})
+      return res.json(updatedPost)
     } catch (e) {
       res.status(400).json(e)
     }
