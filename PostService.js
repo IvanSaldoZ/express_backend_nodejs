@@ -3,7 +3,7 @@ import Post from "./Post.js";
 class PostService {
 
   // Создание статьи
-  async create(post) {
+  async create(post, picture) {
     return await Post.create(post);
   }
 

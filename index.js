@@ -1,5 +1,6 @@
 import express from 'express'
 import mongoose from 'mongoose'
+import fileUpload from 'express-fileupload';
 
 // Маршруты (роутеры) управления статьями
 import router from "./router.js";
@@ -18,6 +19,9 @@ app.use(express.json())
 
 // Регистрируем роутер
 app.use('/api', router)
+
+// Регистрируем аплоадер для загрузки файлов на сервер
+app.use(fileUpload({}))
 
 async function startApp() {
   try {
