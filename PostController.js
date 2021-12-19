@@ -21,7 +21,8 @@ class PostController {
   // Получение всех статей
   async getAll(req, res) {
     try {
-
+      const posts = await Post.find()
+      return res.json(posts)
     } catch (e) {
       res.status(400).json(e)
     }
