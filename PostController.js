@@ -57,7 +57,12 @@ class PostController {
   // Удаление статьи
   async delete(req, res) {
     try {
-
+      const {id} = req.params
+      if (!id) {
+        res.status(400).json({message: 'ID не указан'})
+      }
+      const post = await Post.findByIdAndRemove(id)
+      return res.status(204).json(post)
     } catch (e) {
       res.status(400).json(e)
     }
