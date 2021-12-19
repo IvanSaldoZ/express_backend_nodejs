@@ -6,8 +6,7 @@ class PostController {
   // Создание статьи
   async create(req, res) {
     try {
-      console.log(req.files)
-      const post = await PostService.create(req.body, req.files)
+      const post = await PostService.create(req.body, req.files.picture)
       // Возвращаем нужный статус
       res.status(201).json({post})
     } catch (e) {

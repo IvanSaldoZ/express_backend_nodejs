@@ -17,8 +17,8 @@ const app = express()
 // Для того чтобы Express понимал JSON-формат, отправляемый ему от пользователя в BODY
 app.use(express.json())
 
-// Регистрируем роутер
-app.use('/api', router)
+// Папка для того, чтобы отображать статику
+app.use(express.static('static'))
 
 // Регистрируем аплоадер для загрузки файлов на сервер
 app.use(fileUpload({}))

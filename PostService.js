@@ -1,10 +1,12 @@
 import Post from "./Post.js";
+import FileService from "./fileService.js";
 
 class PostService {
 
-  // Создание статьи
+  // Создание статьи с картинкой
   async create(post, picture) {
-    return await Post.create(post);
+    const fileName = FileService.saveFile(picture)
+    return await Post.create({...post, picture: fileName});
   }
 
   // Получение всех статей
