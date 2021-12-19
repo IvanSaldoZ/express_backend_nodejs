@@ -31,7 +31,9 @@ class PostController {
   // Получение одной статьи
   async getOne(req, res) {
     try {
-
+      const {id} = req.params
+      const post = await Post.findById(id)
+      return res.json(post)
     } catch (e) {
       res.status(400).json(e)
     }
