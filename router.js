@@ -7,15 +7,15 @@ const router = new Router()
 router.post('/posts', PostController.create)
 
 // Получение статей
-router.get('/posts')
+router.get('/posts', PostController.getAll)
 
 // Получение статьи по ID-шнику
-router.get('/posts/:id')
+router.get('/posts/:id', PostController.getOne)
 
 // Редактирование статьи
-router.put('/posts/:id')
+router.put('/posts/:id', PostController.update)
 
 // Удаление статьи
-router.delete('/posts/:id')
+router.delete('/posts/:id', PostController.delete)
 
 export default router;

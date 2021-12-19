@@ -18,6 +18,26 @@ class PostController {
     }
   }
 
+  // Получение всех статей
+  async getAll(req, res) {
+
+  }
+
+  // Получение одной статьи
+  async getOne(req, res) {
+
+  }
+
+  // Редактирование одной статьи
+  async update(req, res) {
+
+  }
+
+  // Удаление статьи
+  async delete(req, res) {
+
+  }
+
 }
 
 
