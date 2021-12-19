@@ -1,22 +1,11 @@
 import {Router} from "express";
-import Post from "./Post.js";
+import PostController from "./PostController.js";
 
 const router = new Router()
 
 // Создание статьи
-router.post('/posts', async (req, res) => {
-  try {
-    // Распаковываем боди
-    const {author, title, content, picture} = req.body
-    // Создаем запись в БД
-    const post = await Post.create({author, title, content, picture})
-    // Возвращаем нужный статус
-    res.status(201).json({post})
-  } catch (e) {
-    // Возвращаем нужный статус
-    res.status(400).json(e)
-  }
-})
+router.post('/posts', PostController.create)
+
 // Получение статей
 router.get('/posts')
 
